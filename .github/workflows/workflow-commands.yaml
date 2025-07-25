@@ -12,6 +12,6 @@ jobs:
       - name: Setting an debug message with parameters
         run: echo "::debug title=Debug title,file=error.js,line=2,endLine=4,col=3,endColumn=7::Another missing semicolon"
       - name: Setting an warning message with parameters
-        run: echo "::error title=Warning title,file=error.js,line=2,endLine=4,col=3,endColumn=7::Another missing semicolon"
+        run: echo "::warning title=Warning title,file=error.js,line=2,endLine=4,col=3,endColumn=7::Another missing semicolon"
       - name: Setting a notice message with parameters
-        run: echo "::error title=Notice title,file=error.js,line=2,endLine=4,col=3,endColumn=7::Another missing semicolon"
+        run: echo "::notice title=Notice title,file=error.js,line=2,endLine=4,col=3,endColumn=7::Another missing semicolon"
