@@ -15,3 +15,12 @@ jobs:
         run: echo "::warning title=Warning title,file=error.js,line=2,endLine=4,col=3,endColumn=7::Another missing semicolon"
       - name: Setting a notice message with parameters
         run: echo "::notice title=Notice title,file=error.js,line=2,endLine=4,col=3,endColumn=7::Another missing semicolon"
+      - name: Group of logs
+        run: |
+          echo "::group::Group title"
+          echo "I'm inside group"
+          echo "::endgroup::"
+      - name: Masking a value
+        run: echo "::add-mask::secretstring"
+      - name: Echo a secret
+        run: echo "secretstring"
