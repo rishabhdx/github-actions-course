@@ -1,6 +1,13 @@
 name: Repository events with types
 on:
   push:
+    branches:
+      - main
+      - "feature/*" # matches feature/featA, feature/featB but does not match feature/featA/featB
+      - "feature/**" # matches feature/featA, feature/featB and feature/featA/featB
+      - "!feature/danger" # branch excluded - order of listing is important
+    # branches-ignore:
+    #   - "staging/*"
   pull_request:
     types: [opened, closed]
   issues:
