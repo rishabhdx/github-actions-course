@@ -1,0 +1,15 @@
+name: Stale issues
+on:
+  schedule:
+    - cron: 0 14 * * *
+    - cron: 0/5 * * * * # added for testing
+
+jobs:
+  check-stale-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v8
+        with:
+          stale-issue-message: This issue has been now marked as stale.
+          days-before-stale: 1
+          days-before-close: 5
