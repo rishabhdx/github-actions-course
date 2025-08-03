@@ -8,7 +8,11 @@ jobs:
       - name: Step 1
         run: sleep 20
       - name: Force failure
+        continue-on-error: true
         run: exit 1
+      - name: Runs on previous step failure
+        if: failure()
+        run: echo "Previous step has failed"
       - name: Runs on failure
         if: failure()
         run: echo "Runs only on failure"
