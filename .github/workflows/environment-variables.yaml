@@ -23,6 +23,7 @@ jobs:
           {
             echo 'JSON_RESPONSE<<EOF'
             curl https://www.google.com
+            echo ''
             echo EOF
           } >> "$GITHUB_ENV"
       - name: Another multiline env var
