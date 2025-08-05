@@ -1,0 +1,42 @@
+name: Dynamic Matrix
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+        default: "ubuntu-latest,windows-latest,macos-latest"
+        type: string
+        required: true
+        description: Operating systems
+      node-version:
+        default: "18,20,22"
+        type: string
+        required: true
+        description: Node versions
+
+jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "step-output=value1" >> $GITHUB_OUTPUT
+        id: step-1
+      - run: echo "step-output=value2" >> $GITHUB_OUTPUT
+        id: step-2
+      - run: |
+          echo ${{ steps.step-1.outputs.step-output }}
+          echo ${{ steps.step-2.outputs.step-output }}
+
+  node-matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [18, 20, 22]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Initial node version
+        run: node -v
+      - name: Setup node via actions
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Final node version
+        run: node -v
