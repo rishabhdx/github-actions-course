@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
-        run: npm run ci
+        run: npm install
       - name: Use axios
         uses: actions/github-script@v7
         with:
