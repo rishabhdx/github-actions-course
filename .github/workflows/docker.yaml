@@ -39,3 +39,11 @@ jobs:
         with:
           entrypoint: cat
           args: hello.txt
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Run a bash script
+        uses: docker://node:24-alpine3.21
+        with:
+          entrypoint: ./script.sh
+          args: "This is my script"
