@@ -22,6 +22,8 @@ jobs:
           cat /etc/os-release
       - name: Log env variable
         run: echo $API_URL
+      - name: Create a file
+        run: echo "Hello world" > hello.txt
       - name: Container in a step
         uses: docker://node:24-alpine3.21
         with:
@@ -32,3 +34,8 @@ jobs:
         with:
           # entrypoint: /usr/local/bin/node
           args: -v
+      - name: Show file contents
+        uses: docker://node:24-alpine3.21
+        with:
+          entrypoint: cat
+          args: hello.txt
